@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+    <bean id="ProductDao" class="daoimpl.ProductDaoImpl"></bean>
+    <bean id="CategoryDao" class="daoimpl.CategoryDaoImpl"></bean>
+    <bean id="UserDao" class="daoimpl.UserDaoImpl"></bean>
+    <bean id="ProductService" class="serviceimpl.ProductServiceImpl"></bean>
+    <bean id="CategoryService" class="serviceimpl.CategoryServiceImpl"></bean>
+    <bean id="UserService" class="serviceimpl.UserServiceImpl"></bean>
+</beans>
