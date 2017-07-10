@@ -20,7 +20,7 @@
 								div1.innerHTML = xhr.responseText;
 							}
 						}
-					}
+					};
 					// 3.打开连接
 					xhr.open("GET","${pageContext.request.contextPath}/adminOrder_findOrderItem.action?oid="+oid+"&time="+new Date().getTime(),true);
 					// 4.发送

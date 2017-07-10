@@ -31,10 +31,7 @@ function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 
 	this._p;
 
-};
-
-
-
+}
 // Tree object
 
 function dTree(objName) {
@@ -59,7 +56,7 @@ function dTree(objName) {
 
 		inOrder					: false
 
-	}
+	};
 
 	this.icon = {
 
@@ -107,10 +104,7 @@ function dTree(objName) {
 
 	this.completed = false;
 
-};
-
-
-
+}
 // Adds a new node to the node array
 
 dTree.prototype.add = function(id, pid, name, url, title, target, icon, iconOpen, open) {
@@ -411,7 +405,7 @@ dTree.prototype.oAll = function(status) {
 
 		if (this.aNodes[n]._hc && this.aNodes[n].pid != this.root.id) {
 
-			this.nodeStatus(status, n, this.aNodes[n]._ls)
+			this.nodeStatus(status, n, this.aNodes[n]._ls);
 
 			this.aNodes[n]._io = status;
 
@@ -483,7 +477,7 @@ dTree.prototype.closeLevel = function(node) {
 
 	}
 
-}
+};
 
 
 
@@ -505,7 +499,7 @@ dTree.prototype.closeAllChildren = function(node) {
 
 	}
 
-}
+};
 
 
 
@@ -655,8 +649,7 @@ if (!Array.prototype.push) {
 
 	}
 
-};
-
+}
 if (!Array.prototype.pop) {
 
 	Array.prototype.pop = function array_pop() {
@@ -669,4 +662,4 @@ if (!Array.prototype.pop) {
 
 	}
 
-};
+}

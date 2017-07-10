@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage.RecipientType;
 public class MailUtils {
 
 	public static void sendMail(String email, String emailMsg)
-			throws AddressException, MessagingException {
+			throws MessagingException {
 			// 创建会话对象
 		//1、获得邮箱服务的连接(会话对象)
 		Properties props = new Properties();//封装数据

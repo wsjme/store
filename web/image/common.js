@@ -147,7 +147,7 @@ function message(code) {
 			}
 		});
 		return result;
-	}
+	};
 
 	// 跳转登录
 	$.redirectLogin = function (redirectUrl, message) {
@@ -163,7 +163,7 @@ function message(code) {
 		} else {
 			location.href = href;
 		}
-	}
+	};
 
 	// 消息框
 	var $message;
@@ -199,7 +199,7 @@ function message(code) {
 			$message.hide();
 		}, 3000);
 		return $message;
-	}
+	};
 
 	// 令牌	
 	$(document).ajaxSend(function(event, request, settings) {

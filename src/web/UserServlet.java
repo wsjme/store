@@ -43,7 +43,6 @@ public class UserServlet extends BaseServlet {
             //String emailMsg ="这是一封用户"+user.getName()+"用户的激活邮件，请<a href=http://localhost:8080/store/user?method=active&code="+user.getCode()+">点击激活</a>";
             String eamilMsg = "注册成功，请<a href=http://localhost:8080/user?method=active&code=" + user.getCode() + ">点击激活</a>";
             MailUtils.sendMail(user.getEmail(), eamilMsg);
-            System.out.println(user.getEmail());
             request.setAttribute("msg", "恭喜你,注册成功,请尽快登录邮箱进行激活...");
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,7 +94,6 @@ public class UserServlet extends BaseServlet {
             String password = request.getParameter("password");
             // 1 获取页面验证码数据
             String ymyzm = request.getParameter("ymyzm");  //ymyzm=nqq2
-            System.out.println(ymyzm);
             // 2 获取codeservlet的数据
             HttpSession session = request.getSession();
             String sessionyzm =(String)session.getAttribute("sessionyzm"); //sessionyzm=nqq2
@@ -111,12 +109,10 @@ public class UserServlet extends BaseServlet {
                 // 获取用户名和密码去数据库匹配
                 session.removeAttribute("sessionyzm");
                 response.getWriter().println("ok");
-                System.out.println("OK");
                 // 根据用户名和密码去数据库匹配
                 //UserService us= new UserServiceImpl();
                 UserService usbean= (UserService) FactoryDemo.getBean("UserService");
                 User user = usbean.findUser(username,password);
-                System.out.println(user);
                 if(user==null)
                 {
                     request.setAttribute("msg", "用户名或者密码错误..");

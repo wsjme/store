@@ -39,7 +39,7 @@ String.prototype.toDate = function(style) {
 	eval("dt = new Date('" + y + "', '" + (m - 1) + "','" + d + "','" + h
 			+ "','" + i + "','" + s + "')");
 	return dt;
-}
+};
 /**//* 格式化日期 */
 Date.prototype.format = function(style) {
 	var o = {
@@ -52,7 +52,7 @@ Date.prototype.format = function(style) {
 		"q+" : Math.floor((this.getMonth() + 3) / 3), // quarter
 		"S" : this.getMilliseconds()
 	// millisecond
-	}
+	};
 	if (/(y+)/.test(style)) {
 		style = style.replace(RegExp.$1, (this.getFullYear() + "")
 				.substr(4 - RegExp.$1.length));
@@ -111,7 +111,7 @@ function Calendar(beginYear, endYear, lang, dateFormatStyle) {
 		"tr_bg" : "#666666", // 日历头背影色
 		"input_border" : "#CCCCCC", // input控件的边框颜色
 		"input_bg" : "#EFEFEF" // input控件的背影色
-	}
+	};
 
 	this.draw();
 	this.bindYear();
@@ -136,7 +136,7 @@ Calendar.language = {
 	"clear" : [ [ "清空" ], [ "CLS" ] ],
 	"today" : [ [ "今天" ], [ "TODAY" ] ],
 	"close" : [ [ "关闭" ], [ "CLOSE" ] ]
-}
+};
 
 Calendar.prototype.draw = function() {
 	calendar = this;
@@ -220,48 +220,48 @@ Calendar.prototype.draw = function() {
 	var obj = this.getElementById("prevMonth");
 	obj.onclick = function() {
 		calendar.goPrevMonth(calendar);
-	}
+	};
 	obj.onblur = function() {
 		calendar.onblur();
-	}
+	};
 	this.prevMonth = obj;
 
 	obj = this.getElementById("nextMonth");
 	obj.onclick = function() {
 		calendar.goNextMonth(calendar);
-	}
+	};
 	obj.onblur = function() {
 		calendar.onblur();
-	}
+	};
 	this.nextMonth = obj;
 
 	obj = this.getElementById("calendarClear");
 	obj.onclick = function() {
 		calendar.dateControl.value = "";
 		calendar.hide();
-	}
+	};
 	this.calendarClear = obj;
 
 	obj = this.getElementById("calendarClose");
 	obj.onclick = function() {
 		calendar.hide();
-	}
+	};
 	this.calendarClose = obj;
 
 	obj = this.getElementById("calendarYear");
 	obj.onchange = function() {
 		calendar.update(calendar);
-	}
+	};
 	obj.onblur = function() {
 		calendar.onblur();
-	}
+	};
 	this.calendarYear = obj;
 
 	obj = this.getElementById("calendarMonth");
 	with (obj) {
 		onchange = function() {
 			calendar.update(calendar);
-		}
+		};
 		onblur = function() {
 			calendar.onblur();
 		}
@@ -317,9 +317,9 @@ Calendar.prototype.draw = function() {
 		calendar.bindData();
 		calendar.dateControl.value = today.format(calendar.dateFormatStyle);
 		calendar.hide();
-	}
+	};
 	this.calendarToday = obj;
-}
+};
 
 // 年份下拉框绑定数据
 Calendar.prototype.bindYear = function() {
@@ -329,7 +329,7 @@ Calendar.prototype.bindYear = function() {
 		cy.options[cy.length] = new Option(i
 				+ Calendar.language["year"][this.lang], i);
 	}
-}
+};
 
 // 月份下拉框绑定数据
 Calendar.prototype.bindMonth = function() {
@@ -339,22 +339,22 @@ Calendar.prototype.bindMonth = function() {
 		cm.options[cm.length] = new Option(
 				Calendar.language["months"][this.lang][i], i);
 	}
-}
+};
 
 // 获取小时的数据
 Calendar.prototype.getHour = function() {
 	return this.calendarHour.options[this.calendarHour.selectedIndex].value;
-}
+};
 
 // 获取分钟的数据
 Calendar.prototype.getMinute = function() {
 	return this.calendarMinute.options[this.calendarMinute.selectedIndex].value;
-}
+};
 
 // 获取秒的数据
 Calendar.prototype.getSecond = function() {
 	return this.calendarSecond.options[this.calendarSecond.selectedIndex].value;
-}
+};
 
 // 向前一月
 Calendar.prototype.goPrevMonth = function(e) {
@@ -370,7 +370,7 @@ Calendar.prototype.goPrevMonth = function(e) {
 			.getMinute(), this.getSecond());
 	this.changeSelect();
 	this.bindData();
-}
+};
 
 // 向后一月
 Calendar.prototype.goNextMonth = function(e) {
@@ -386,7 +386,7 @@ Calendar.prototype.goNextMonth = function(e) {
 			.getMinute(), this.getSecond());
 	this.changeSelect();
 	this.bindData();
-}
+};
 
 // 改变SELECT选中状态
 Calendar.prototype.changeSelect = function() {
@@ -425,7 +425,7 @@ Calendar.prototype.changeSelect = function() {
 			break;
 		}
 	}
-}
+};
 
 // 更新年、月
 Calendar.prototype.update = function(e) {
@@ -435,7 +435,7 @@ Calendar.prototype.update = function(e) {
 			.getMinute(), this.getSecond());
 	this.changeSelect();
 	this.bindData();
-}
+};
 
 // 绑定数据到月视图
 Calendar.prototype.bindData = function() {
@@ -446,14 +446,14 @@ Calendar.prototype.bindData = function() {
 	for ( var i = 0; i < tds.length; i++) {
 		tds[i].style.backgroundColor = calendar.colors["td_bg_out"];
 		tds[i].onclick = function() {
-			return;
-		}
+
+		};
 		tds[i].onmouseover = function() {
-			return;
-		}
+
+		};
 		tds[i].onmouseout = function() {
-			return;
-		}
+
+		};
 		if (i > dateArray.length - 1)
 			break;
 		tds[i].innerHTML = dateArray[i];
@@ -467,20 +467,20 @@ Calendar.prototype.bindData = function() {
 							.format(calendar.dateFormatStyle);
 				}
 				calendar.hide();
-			}
+			};
 			tds[i].onmouseover = function() {
 				this.style.backgroundColor = calendar.colors["td_bg_over"];
-			}
+			};
 			tds[i].onmouseout = function() {
 				this.style.backgroundColor = calendar.colors["td_bg_out"];
-			}
+			};
 			if (new Date().format("yyyy-MM-dd") == new Date(calendar.date
 					.getFullYear(), calendar.date.getMonth(), dateArray[i])
 					.format("yyyy-MM-dd")) {
 				tds[i].style.backgroundColor = calendar.colors["cur_bg"];
 				tds[i].onmouseover = function() {
 					this.style.backgroundColor = calendar.colors["td_bg_over"];
-				}
+				};
 				tds[i].onmouseout = function() {
 					this.style.backgroundColor = calendar.colors["cur_bg"];
 				}
@@ -496,14 +496,14 @@ Calendar.prototype.bindData = function() {
 				tds[i].style.backgroundColor = calendar.colors["sel_bg"];
 				tds[i].onmouseover = function() {
 					this.style.backgroundColor = calendar.colors["td_bg_over"];
-				}
+				};
 				tds[i].onmouseout = function() {
 					this.style.backgroundColor = calendar.colors["sel_bg"];
 				}
 			}
 		}
 	}
-}
+};
 
 // 根据年、月得到月视图数据(数组形式)
 Calendar.prototype.getMonthViewArray = function(y, m) {
@@ -517,7 +517,7 @@ Calendar.prototype.getMonthViewArray = function(y, m) {
 		mvArray[i + dayOfFirstDay] = i + 1;
 	}
 	return mvArray;
-}
+};
 
 // 扩展 document.getElementById(id) 多浏览器兼容性 from meizz tree source
 Calendar.prototype.getElementById = function(id) {
@@ -532,7 +532,7 @@ Calendar.prototype.getElementById = function(id) {
 	} catch (e) {
 		return null;
 	}
-}
+};
 
 // 扩展 object.getElementsByTagName(tagName)
 Calendar.prototype.getElementsByTagName = function(object, tagName) {
@@ -540,7 +540,7 @@ Calendar.prototype.getElementsByTagName = function(object, tagName) {
 		return document.getElementsByTagName(tagName);
 	if (document.all)
 		return document.all.tags(tagName);
-}
+};
 
 // 取得HTML控件绝对位置
 Calendar.prototype.getAbsPoint = function(e) {
@@ -554,7 +554,7 @@ Calendar.prototype.getAbsPoint = function(e) {
 		"x" : x,
 		"y" : y
 	};
-}
+};
 
 // 显示日历
 Calendar.prototype.show = function(dateObj, popControl) {
@@ -581,28 +581,28 @@ Calendar.prototype.show = function(dateObj, popControl) {
 
 	dateObj.onblur = function() {
 		calendar.onblur();
-	}
+	};
 	this.container.onmouseover = function() {
 		isFocus = true;
-	}
+	};
 	this.container.onmouseout = function() {
 		isFocus = false;
 	}
-}
+};
 
 // 隐藏日历
 Calendar.prototype.hide = function() {
 	this.panel.style.display = "none";
 	this.container.style.display = "none";
 	isFocus = false;
-}
+};
 
 // 焦点转移时隐藏日历
 Calendar.prototype.onblur = function() {
 	if (!isFocus) {
 		this.hide();
 	}
-}
+};
 document
 		.write('<div id="ContainerPanel" style="display:none;"><div id="calendarPanel" style="position: absolute;display: none;z-index: 9999;');
 document

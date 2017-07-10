@@ -63,14 +63,17 @@
 
 						<div style="padding:10px;border:1px solid #e7dbb1;width:330px;margin:15px 0 10px 0;;background-color: #fffee6;">
 							<div style="margin:5px 0 10px 0;">白色</div>
-
+						<form method="post" action="${pageContext.request.contextPath}/cart">
+							<input type="hidden" name="pid" value="${p.pid}">
+							<input type="hidden" name="method" value="addCart">
 							<div style="border-bottom: 1px solid #faeac7;margin-top:20px;padding-left: 10px;">购买数量:
-								<input id="quantity" name="quantity" value="1" maxlength="4" size="10" type="text"> </div>
+								<input id="count" name="count" value="1" maxlength="4" size="10" type="text"> </div>
 
 							<div style="margin:20px 0 10px 0;;text-align: center;">
-								<a href="cart.htm">
-									<input style="background: url('${pageContext.request.contextPath}/images/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;" value="加入购物车" type="button">
+								<a href="#">
+									<input style="background: url('${pageContext.request.contextPath}/images/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;" value="加入购物车" type="submit">
 								</a> &nbsp;收藏商品</div>
+						</form>
 						</div>
 					</div>
 				</div>

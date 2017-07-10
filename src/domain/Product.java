@@ -94,7 +94,12 @@ public class Product
 	public void setCateGory(CateGory cateGory) {
 		this.cateGory = cateGory;
 	}
-    
-    
-    
+
+	@Override
+	public String toString() {
+		return "Product{" +
+				"pid='" + pid + '\'' +
+				", pname='" + pname + '\'' +
+				'}';
+	}
 }

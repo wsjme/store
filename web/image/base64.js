@@ -23,7 +23,7 @@ function hex2b64(h) {
 
 // convert a base64 string to hex
 function b64tohex(s) {
-  var ret = ""
+  var ret = "";
   var i;
   var k = 0; // b64 state, 0-3
   var slop;
@@ -63,7 +63,7 @@ function b64toBA(s) {
   //piggyback on b64tohex for now, optimize later
   var h = b64tohex(s);
   var i;
-  var a = new Array();
+  var a = [];
   for(i = 0; 2*i < h.length; ++i) {
     a[i] = parseInt(h.substring(2*i,2*i+2),16);
   }
