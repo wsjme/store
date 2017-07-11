@@ -33,7 +33,7 @@
 
             <c:if test="${not empty user}">
                 <li style="color:red">欢迎您:${user.name}</li>
-                <li><a href="${pageContext.request.contextPath}/user?method=registUI">我的订单</a></li>
+                <li><a href="${pageContext.request.contextPath}/order?method=myOrder&pageNumber=1">我的订单</a></li>
                 <li><a href="cart.htm">购物车</a></li>
                 <li><a href="${pageContext.request.contextPath}/user?method=quit">退出</a></li>
             </c:if>

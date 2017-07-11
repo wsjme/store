@@ -3,7 +3,7 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 
-public class PageBean implements Serializable
+public class PageBean<T> implements Serializable
 {
 	// 总条数
 	private int totalCount;
@@ -14,7 +14,7 @@ public class PageBean implements Serializable
 	// 每页显示的条数
 	private int pageSize;
 	// 每页显示的数据
-	private List<Product> list;
+	private List<T> list;
 	public int getTotalCount() {
 		return totalCount;
 	}
@@ -39,10 +39,10 @@ public class PageBean implements Serializable
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-	public List<Product> getList() {
+	public List<T> getList() {
 		return list;
 	}
-	public void setList(List<Product> list) {
+	public void setList(List<T> list) {
 		this.list = list;
 	}
 	

@@ -28,66 +28,10 @@
 
 	<body>
 
-			<!--
-            	时间：2015-12-30
-            	描述：菜单栏
-            -->
-			<div class="container-fluid">
-				<div class="col-md-4">
-					<img src="${pageContext.request.contextPath}/img/logo2.png" />
-				</div>
-				<div class="col-md-5">
-					<img src="${pageContext.request.contextPath}/img/header.png" />
-				</div>
-				<div class="col-md-3" style="padding-top:20px">
-					<ol class="list-inline">
-						<li><a href="login.htm">登录</a></li>
-						<li><a href="register.htm">注册</a></li>
-						<li><a href="cart.htm">购物车</a></li>
-					</ol>
-				</div>
-			</div>
-			<!--
-            	时间：2015-12-30
-            	描述：导航条
-            -->
-			<div class="container-fluid">
-				<nav class="navbar navbar-inverse">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">首页</a>
-						</div>
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">手机数码<span class="sr-only">(current)</span></a></li>
-								<li><a href="#">电脑办公</a></li>
-								<li><a href="#">电脑办公</a></li>
-								<li><a href="#">电脑办公</a></li>
-							</ul>
-							<form class="navbar-form navbar-right" role="search">
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Search">
-								</div>
-								<button type="submit" class="btn btn-default">Submit</button>
-							</form>
 
-						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-					<!-- /.container-fluid -->
-				</nav>
-			</div>
 
-		</nav>
+			<%@include file="head.jsp"%>
 
 		<div class="container">
 			<div class="row">
@@ -95,149 +39,135 @@
 				<div style="margin:0 auto; margin-top:10px;width:950px;">
 					<strong>我的订单</strong>
 					<table class="table table-bordered">
-						<tbody>
-							<tr class="success">
-								<th colspan="5">订单编号:9005 </th>
-							</tr>
-							<tr class="warning">
-								<th>图片</th>
-								<th>商品</th>
-								<th>价格</th>
-								<th>数量</th>
-								<th>小计</th>
-							</tr>
-							<tr class="active">
-								<td width="60" width="40%">
-									<input type="hidden" name="id" value="22">
-									<img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70" height="60">
-								</td>
-								<td width="30%">
-									<a target="_blank"> 有机蔬菜      大冬瓜...</a>
-								</td>
-								<td width="20%">
-									￥298.00
-								</td>
-								<td width="10%">
-									5
-								</td>
-								<td width="15%">
-									<span class="subtotal">￥596.00</span>
-								</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr class="success">
-								<th colspan="5">订单编号:9004 </th>
-							</tr>
-							<tr class="warning">
-								<th>图片</th>
-								<th>商品</th>
-								<th>价格</th>
-								<th>数量</th>
-								<th>小计</th>
-							</tr>
-							<tr class="active">
-								<td width="60" width="40%">
-									<input type="hidden" name="id" value="22">
-									<img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70" height="60">
-								</td>
-								<td width="30%">
-									<a target="_blank"> 有机蔬菜      大冬瓜...</a>
-								</td>
-								<td width="20%">
-									￥298.00
-								</td>
-								<td width="10%">
-									5
-								</td>
-								<td width="15%">
-									<span class="subtotal">￥596.00</span>
-								</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr class="success">
-								<th colspan="5">订单编号:9003 </th>
-							</tr>
-							<tr class="warning">
-								<th>图片</th>
-								<th>商品</th>
-								<th>价格</th>
-								<th>数量</th>
-								<th>小计</th>
-							</tr>
-							<tr class="active">
-								<td width="60" width="40%">
-									<input type="hidden" name="id" value="22">
-									<img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70" height="60">
-								</td>
-								<td width="30%">
-									<a target="_blank"> 有机蔬菜      大冬瓜...</a>
-								</td>
-								<td width="20%">
-									￥298.00
-								</td>
-								<td width="10%">
-									5
-								</td>
-								<td width="15%">
-									<span class="subtotal">￥596.00</span>
-								</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr class="success">
-								<th colspan="5">订单编号:9002 </th>
-							</tr>
-							<tr class="warning">
-								<th>图片</th>
-								<th>商品</th>
-								<th>价格</th>
-								<th>数量</th>
-								<th>小计</th>
-							</tr>
-							<tr class="active">
-								<td width="60" width="40%">
-									<input type="hidden" name="id" value="22">
-									<img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70" height="60">
-								</td>
-								<td width="30%">
-									<a target="_blank"> 有机蔬菜      大冬瓜...</a>
-								</td>
-								<td width="20%">
-									￥298.00
-								</td>
-								<td width="10%">
-									5
-								</td>
-								<td width="15%">
-									<span class="subtotal">￥596.00</span>
-								</td>
-							</tr>
-						</tbody>
+						<c:if test="${not empty pb.list}">
+							<c:forEach items="${pb.list}" var="order">
+								<tbody>
+
+
+								<tr class="success">
+									<th colspan="4">订单编号:${order.oid} </th>
+									<th>订单状态:
+										<c:if test="${order.state==0}">
+											<a style="color:red" href="${pageContext.request.contextPath}/order?method=findByoid&oid=${order.oid}">去付款</a>
+										</c:if>
+										<c:if test="${order.state==1}">
+											<a style="color:red">等待发货</a>
+										</c:if>
+										<c:if test="${order.state==2}">
+											<a style="color:red">等待收货</a>
+										</c:if>
+										<c:if test="${order.state==3}">
+											<a style="color:red">确认收货</a>
+										</c:if>
+										<c:if test="${order.state==4}">
+											<a style="color:red">订单完成</a>
+										</c:if>
+									</th>
+								</tr>
+								<tr class="warning">
+									<th>图片</th>
+									<th>商品</th>
+									<th>价格</th>
+									<th>数量</th>
+									<th>小计</th>
+								</tr>
+								<c:if test="${not empty order.list}">
+									<c:forEach items="${order.list}" var="item">
+										<tr class="active">
+											<td width="60" width="40%">
+												<input type="hidden" name="id" value="22">
+												<img src="${pageContext.request.contextPath}/${item.product.pimage}" width="70" height="60">
+											</td>
+											<td width="30%">
+												<a target="_blank">${item.product.pname}</a>
+											</td>
+											<td width="20%">
+												￥${item.product.shop_price}
+											</td>
+											<td width="10%">
+													${item.count}
+											</td>
+											<td width="15%">
+												<span class="subtotal">￥${item.subtotal}</span>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:if>
+								</tbody>
+							</c:forEach>
+						</c:if>
 					</table>
 				</div>
 			</div>
-			<div style="text-align: center;">
-				<ul class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>
-					<li><a href="#">7</a></li>
-					<li><a href="#">8</a></li>
-					<li><a href="#">9</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
+
+		</div>
+
+
+
+
+
+
+			<div style="width:380px;margin:0 auto;margin-top:50px;">
+				<ul class="pagination" style="text-align:center; margin-top:10px;">
+
+					<!-- class="disabled" 禁用   << -->
+					<c:if test="${pb.pageNumber==1}">
+						<li class="disabled">
+							<a href="${pageContext.request.contextPath}/order?method=myOrder&pageNumber=${pb.pageNumber-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:if>
+					<c:if test="${pb.pageNumber!=1}">
+						<li>
+							<a href="${pageContext.request.contextPath}//order?method=myOrder&pageNumber=${pb.pageNumber-1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:if>
+
+
+					<c:forEach begin="1" end="${pb.totalPage}" step="1" var="page">
+						<c:if test="${pb.pageNumber!=page}">
+							<li><a href="${pageContext.request.contextPath}/order?method=myOrder&pageNumber=${page}">${page}</a></li>
+						</c:if>
+
+						<c:if test="${pb.pageNumber==page}">
+							<li class="active"><a>${page}</a></li>
+						</c:if>
+					</c:forEach>
+
+
+					<c:if test="${pb.pageNumber==pb.totalPage}">
+						<li class="disabled">
+							<a href="${pageContext.request.contextPath}/order?method=myOrder&pageNumber=${pb.pageNumber+1}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</c:if>
+
+
+
+
+
+					<c:if test="${pb.pageNumber!=pb.totalPage}">
+						<li>
+							<a href="${pageContext.request.contextPath}/order?method=myOrder&pageNumber=${pb.pageNumber+1}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</c:if>
+
 				</ul>
 			</div>
-		</div>
+
+
+
+
+
+
+
+
+
+
 
 		<div style="margin-top:50px;">
 			<img src="${pageContext.request.contextPath}/image/footer.jpg" width="100%" height="78" alt="我们的优势" title="我们的优势" />

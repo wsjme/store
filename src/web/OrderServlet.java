@@ -4,6 +4,7 @@ import domain.*;
 import factory.FactoryDemo;
 import service.OrderService;
 import utils.BaseServlet;
+import utils.PaymentUtil;
 import utils.UUIDUtils;
 
 import javax.servlet.ServletException;
@@ -77,5 +78,129 @@ public class OrderServlet extends BaseServlet {
             e.printStackTrace();
         }
         return "/jsp/order_info.jsp";
+    }
+
+
+    public String myOrder(HttpServletRequest request, HttpServletResponse response){
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            int pageSize=3;
+            HttpSession session = request.getSession();
+            User user = (User)session.getAttribute("user");
+            if(user==null){
+                request.setAttribute("msg","请先登录");
+                return "/jsp/info.jsp";
+            }
+            OrderService osbean = (OrderService)FactoryDemo.getBean("OrderService");
+            PageBean pb = osbean.findOrder(user,pageNumber,pageSize);
+            request.setAttribute("pb",pb);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg","查询订单失败");
+            return "/jsp/info.jsp";
+        }
+        return "/jsp/order_list.jsp";
+    }
+
+    public String findByoid(HttpServletRequest request, HttpServletResponse response){
+        try {
+            String oid = request.getParameter("oid");
+            OrderService osbean = (OrderService)FactoryDemo.getBean("OrderService");
+            Order order = osbean.findByoid(oid);
+            request.setAttribute("order",order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "/jsp/order_info.jsp";
+    }
+
+
+
+
+    public String payOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
+        try {
+
+            String oid = request.getParameter("oid");
+            // 根据oid获取订单对象
+            OrderService os =(OrderService)FactoryDemo.getBean("OrderService");
+
+            Order order = os.findByoid(oid);
+            String address = request.getParameter("address");
+            String name = request.getParameter("name");
+            String telephone= request.getParameter("telephone");
+            order.setAddress(address);
+            order.setName(name);
+            order.setTelephone(telephone);
+
+            // 先修改
+            os.update(order);
+
+
+            // 去调用第三方支付平台的接口,还需要传人家要的参数
+            String p0_Cmd = "Buy";
+            String p1_MerId = "10001126856";
+            String p2_Order = order.getOid();
+            String p3_Amt = "0.01";//测试用1分钱，真正开发中用order.getTotal();
+            String p4_Cur = "CNY";
+            String p5_Pid = "";
+            String p6_Pcat = "";
+            String p7_Pdesc = "";
+            String p8_Url = "http://localhost:8080"+request.getContextPath()+"/order?method=callBack";
+            String p9_SAF = "0";
+            String pa_MP = "";
+            String pd_FrpId = request.getParameter("pd_FrpId");
+            String pr_NeedResponse = "1";
+            // 电子签名
+            String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, "69cl522AV6q613Ii4W6u8K6XuW8vM1N6bFgyv769220IuYe9u37N4y7rI4Pl");
+
+            StringBuffer buffer = new StringBuffer("https://www.yeepay.com/app-merchant-proxy/node?");
+            buffer.append("p0_Cmd="+p0_Cmd);
+            buffer.append("&p1_MerId="+p1_MerId);
+            buffer.append("&p2_Order="+p2_Order);
+            buffer.append("&p3_Amt="+p3_Amt);
+            buffer.append("&p4_Cur="+p4_Cur);
+            buffer.append("&p5_Pid="+p5_Pid);
+            buffer.append("&p6_Pcat="+p6_Pcat);
+            buffer.append("&p7_Pdesc="+p7_Pdesc);
+            buffer.append("&p8_Url="+p8_Url);
+            buffer.append("&p9_SAF="+p9_SAF);
+            buffer.append("&pa_MP="+pa_MP);
+            buffer.append("&pd_FrpId="+pd_FrpId);
+            buffer.append("&pr_NeedResponse="+pr_NeedResponse);
+            buffer.append("&hmac="+hmac);
+            response.sendRedirect(buffer.toString());
+
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+
+        return null;
+    }
+
+    public String callBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        try {
+            // 修改订单状态为1
+            String oid = request.getParameter("r6_Order");
+            OrderService os =(OrderService)FactoryDemo.getBean("OrderService");
+            Order order = os.findByoid(oid);
+            order.setState(1);
+            os.update(order);
+
+            // 告诉浏览器支付成功
+            request.setAttribute("msg", "支付成功,你为这个订单"+oid+"支付了"+request.getParameter("r3_Amt")+"元钱");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return "/jsp/info.jsp";
+
     }
 }
