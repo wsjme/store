@@ -48,7 +48,9 @@ public class OrderDaoImpl implements OrderDao{
                 List<Orderitem> itemlist = order.getList();
                 String sql2 = "select * from orderitem o,product p where oid=? and o.pid=p.pid";
                 List<Map<String, Object>> maps = qr.query(sql2, new MapListHandler(), order.getOid());
+
                 for (Map<String, Object> map : maps) {
+                    //System.out.println(map);
                     Orderitem item = new Orderitem();
                     BeanUtils.populate(item,map);
                     Product product = new Product();
